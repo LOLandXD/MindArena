@@ -23,11 +23,11 @@ An AI-powered rhetoric and debate training platform. Practice argumentation agai
 
 ## Getting Started
 
-**Prerequisites:** Node.js
+**Prerequisites:** [Bun](https://bun.sh)
 
 1. Install dependencies:
    ```
-   npm install
+   bun install
    ```
 
 2. Copy the example env file and add your API key:
@@ -38,7 +38,7 @@ An AI-powered rhetoric and debate training platform. Practice argumentation agai
 
 3. Start the dev server:
    ```
-   npm run dev
+   bun dev
    ```
 
 The app runs on [http://localhost:3000](http://localhost:3000).
@@ -47,10 +47,10 @@ The app runs on [http://localhost:3000](http://localhost:3000).
 
 | Command | Description |
 |---|---|
-| `npm run dev` | Start development server |
-| `npm run build` | Build for production |
-| `npm run preview` | Preview production build |
-| `npm run lint` | Type-check with TypeScript |
+| `bun dev` | Start development server |
+| `bun run build` | Build for production |
+| `bun run preview` | Preview production build |
+| `bun run lint` | Type-check with TypeScript |
 
 ## Environment Variables
 
