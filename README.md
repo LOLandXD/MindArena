@@ -1,20 +1,60 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+# MindArena
 
-# Run and deploy your AI Studio app
+An AI-powered rhetoric and debate training platform. Practice argumentation against AI opponents, analyze your logical consistency, and improve critical thinking through structured debate.
 
-This contains everything you need to run your app locally.
+## Features
 
-View your app in AI Studio: https://ai.studio/apps/2acee989-48c7-44dd-9726-204e2c30fd7a
+- **Live Debate Arena** — real-time transcript with phased debate rounds (Opening, Cross-Examination, Rebuttal, Closing, Verdict), support for 2v2 mode, and an AI judge
+- **AI Opponents** — debate against AI agents with adjustable rigor levels from Casual to Elite (Socratic Master)
+- **In-Arena Tools** — Fact Check and Logic Audit quick actions during live debates
+- **Knowledge Base** — curated philosophical frameworks and rhetorical techniques (Socratic Questioning, Logical Fallacies, Kantian Deontology, Heuristics & Biases, Game Theory, Stoic Resolve, and more)
+- **Performance Insights** — Elo rating tracking, win rate, skill balance radar (Logical Consistency, Rhetorical Flair, Evidence Integration, Response Countering, Emotional Intelligence), and AI feedback from the Obsidian Core engine
+- **Competition System** — live tournaments with prize pools and global leaderboards
+- **Neural Tuning** — calibrate your AI assistance levels for Rhetoric, Extraction, and Empathy
 
-## Run Locally
+## Tech Stack
 
-**Prerequisites:**  Node.js
+- **Framework**: React 19 + TypeScript
+- **Build**: Vite 6
+- **Styling**: Tailwind CSS v4
+- **Animations**: Motion (Framer Motion)
+- **AI**: Google Gemini (`@google/genai`)
+- **Icons**: Lucide React
 
+## Getting Started
+
+**Prerequisites:** Node.js
 
 1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+   ```
+   npm install
+   ```
+
+2. Copy the example env file and add your API key:
+   ```
+   cp .env.example .env.local
+   ```
+   Set `GEMINI_API_KEY` to your [Google Gemini API key](https://aistudio.google.com/app/apikey).
+
+3. Start the dev server:
+   ```
+   npm run dev
+   ```
+
+The app runs on [http://localhost:3000](http://localhost:3000).
+
+## Scripts
+
+| Command | Description |
+|---|---|
+| `npm run dev` | Start development server |
+| `npm run build` | Build for production |
+| `npm run preview` | Preview production build |
+| `npm run lint` | Type-check with TypeScript |
+
+## Environment Variables
+
+| Variable | Description |
+|---|---|
+| `GEMINI_API_KEY` | Google Gemini API key (required) |
+| `APP_URL` | Deployment URL for self-referential links and OAuth callbacks |
