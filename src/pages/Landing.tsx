@@ -1,13 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'motion/react';
 import { Swords, ArrowRight, Github } from 'lucide-react';
-import { cn } from '@/lib/utils';
 
 interface LandingProps {
-  onLogin: () => void;
+  onLogin: (email: string) => Promise<void>;
+  isLoading?: boolean;
+  error?: string | null;
 }
 
-export function Landing({ onLogin }: LandingProps) {
+export function Landing({ onLogin, isLoading, error }: LandingProps) {
+  const [email, setEmail] = useState('');
+
   return (
     <div className="min-h-screen flex flex-col md:flex-row bg-background">
       {/* Left Section: Marketing */}
@@ -99,12 +102,20 @@ export function Landing({ onLogin }: LandingProps) {
             <p className="text-secondary text-sm">Enter your credentials to access the engine.</p>
           </div>
 
-          <form className="space-y-5" onSubmit={(e) => { e.preventDefault(); onLogin(); }}>
+          <form
+            className="space-y-5"
+            onSubmit={async (e) => {
+              e.preventDefault();
+              await onLogin(email);
+            }}
+          >
             <div className="space-y-2">
               <label className="text-xs font-bold uppercase tracking-widest text-secondary ml-1">Academic Email</label>
               <input 
                 type="email" 
                 placeholder="name@university.edu"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 className="w-full h-12 bg-surface-container border border-outline-variant rounded-lg px-4 text-on-surface placeholder:text-secondary/30 focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all outline-none"
               />
             </div>
@@ -125,11 +136,18 @@ export function Landing({ onLogin }: LandingProps) {
               <span className="text-sm text-secondary select-none group-hover:text-on-surface transition-colors">Remember session for 30 days</span>
             </label>
 
+            {error ? (
+              <div className="rounded-lg border border-error/30 bg-error/10 px-4 py-3 text-sm text-red-200">
+                {error}
+              </div>
+            ) : null}
+
             <button 
               type="submit"
-              className="w-full h-12 bg-primary text-on-primary font-bold rounded-lg hover:brightness-110 active:scale-[0.98] transition-all flex items-center justify-center gap-2 shadow-lg shadow-primary/20"
+              disabled={isLoading}
+              className="w-full h-12 bg-primary text-on-primary font-bold rounded-lg hover:brightness-110 active:scale-[0.98] transition-all flex items-center justify-center gap-2 shadow-lg shadow-primary/20 disabled:opacity-60 disabled:cursor-not-allowed"
             >
-              Authenticate Access
+              {isLoading ? 'Authenticating...' : 'Authenticate Access'}
               <ArrowRight className="w-4 h-4" />
             </button>
           </form>
